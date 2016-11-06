@@ -1,0 +1,25 @@
+{
+  "name": "adawarp-examples",
+  "version": "1.0.0",
+  "description": "Examples for Adawarp.js",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adawarp/adawarp-examples.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adawarp/adawarp-examples/issues"
+  },
+  "homepage": "https://github.com/adawarp/adawarp-examples#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
