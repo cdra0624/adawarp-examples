@@ -2,10 +2,10 @@
 <head>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script src="https://unpkg.com/adawarp@latest/dist/adawarp.js"></script>
-    <script type="text/javascript" src="videoChat.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </head>
 <body>
-    <h1>ADAWARP video chat</h1>
+    <h1>ADAWARP Image Switcher</h1>
     <a href="https://github.com/cdra0624/webRTCsamples"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
     <div>
         <video id="my-video" style="width: 300px;" autoplay muted></video>
@@ -21,9 +21,16 @@
         <button onclick="callEnd()">End Call</button>
     </div>
     <div>
+        <button onclick="sendPro()">Pro</button>
         <button onclick="sendGo()">Go</button>
-        <button onclick="callEnd()">Pro</button>
-        <button onclick="callEnd()">Whoa</button>
+        <button onclick="sendWarp()">Warp</button>
+    </div>
+    <!--show received data from peer-->
+    <div id="receive_message">---</div>
+    <div>
+        <img id="pro" src="../assets/images/pro.jpeg">
+        <img id="go" src="../assets/images/go.jpg">
+        <img id="warp" src="../assets/images/warp.jpg">
     </div>
 </body>
 </html>
