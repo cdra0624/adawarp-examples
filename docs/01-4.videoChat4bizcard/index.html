@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src="https://unpkg.com/adawarp@latest/dist/adawarp.js"></script>
+</head>
+<body>
+<h1>ADAWARP video chat</h1>
+<div>
+  <video id="my-video" style="width: 300px;" autoplay muted></video>
+  <video id="peer-video" style="width: 300px;" autoplay></video></div>
+MyID: <span id="id1">-</span><br>PeerID: <span id="id2">-</span><br>
+<input type="text" placeholder="PeerID" id="peer-id-input"><br>
+<button onclick="callStart()">Start Call</button>
+<button onclick="callEnd()">End Call</button>
+<script>
+  const peer = new Adawarp(); let localStream, connectedCall;
+  navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(stream => {
+    localStream = stream;
+    document.getElementById("my-video").src = URL.createObjectURL(stream);
+  }, () => { alert("get user media Error!"); }) ;
+  peer.on('open',() => {document.getElementById("id1").innerHTML = peer.id});
+  peer.login();
+  peer.on('call', function(call){ call.answer(localStream); callOn(call); });
+  function callStart(){
+    var peer_id = document.getElementById("peer-id-input").value;
+    var call = peer.call(peer_id, localStream);
+    callOn(call);
+  }
+  function callOn(call) {
+    call.on('stream', stream => {
+      document.getElementById("id2").innerHTML = call.peer;
+      connectedCall = call;
+      var url = URL.createObjectURL(stream);
+      document.getElementById("peer-video").src = url;
+    });
+  }
+  function callEnd() { connectedCall.close(); }
+</script></body></html>

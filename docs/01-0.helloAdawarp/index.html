@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html><head>
+  <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+  <script src="https://unpkg.com/adawarp@latest/dist/adawarp.js"></script></head>
+  <body>
+    <h1>Hello Adawarp</h1>
+    <div><a href="https://goo.gl/FgIXjy">Sender page is here</a></div>
+    <p>MyID: <span id="id">-</span></p><p id="msg">---</p>
+    <script>
+    const peer = new Adawarp();
+    peer.on('open', () => {document.getElementById("id").textContent = peer.id});
+    peer.login();
+    peer.on('connection', conn => { conn.on('data', data => {
+        document.getElementById("msg").textContent = data;
+      });
+    });
+    </script>
+  </body>
+</html>

@@ -3,7 +3,7 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 var localStream;
 var connectedCall;
  
-var peer = new Adawarp();
+var peer = new Adawarp({signalingServerURL: "http://tatsuki.local:3333"});
 
 window.onload = function(){
     displayMyCamera();
